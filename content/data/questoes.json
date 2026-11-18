@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "questoes": [
+    {
+      "id": "q-m00-01",
+      "missao": "M00",
+      "nivel": "fixacao",
+      "enunciado": "Qual equipamento de segurança deve ser conectado ao ponto de aterramento antes de manusear CPU ou memória RAM?",
+      "opcoes": [
+        "Pulseira antiestática (ESD)",
+        "Óculos escuros de solda",
+        "Chave de fenda magnetizada",
+        "Multímetro em escala de corrente"
+      ],
+      "correta": 0,
+      "explicacao": "A pulseira antiestática iguala o potencial elétrico do corpo ao da bancada, evitando descargas eletrostáticas (ESD) nos circuitos.",
+      "tags": ["esd", "seguranca"]
+    },
+    {
+      "id": "q-m01-01",
+      "missao": "M01",
+      "nivel": "compreensao",
+      "enunciado": "Por que é obrigatório aplicar pasta térmica antes de fixar o cooler sobre o processador?",
+      "opcoes": [
+        "Para preencher microimperfeições entre o IHS da CPU e a base do dissipador",
+        "Para colar definitivamente o cooler na placa-mãe",
+        "Para isolar eletricamente o soquete da placa-mãe",
+        "Para aumentar a velocidade do barramento de memória"
+      ],
+      "correta": 0,
+      "explicacao": "O ar é mau condutor térmico; a pasta preenche as microfissuras microscópicas e melhora a transferência de calor para o dissipador.",
+      "tags": ["pasta-termica", "ordem-montagem"]
+    },
+    {
+      "id": "q-m01-02",
+      "missao": "M01",
+      "nivel": "aplicacao",
+      "enunciado": "Em um teste de bancada sem gabinete, como é feito o acionamento seguro da placa-mãe para iniciar o POST?",
+      "opcoes": [
+        "Fechando contato momentâneo (jump) entre os dois pinos PWR_SW com chave de fenda isolada após ligar a fonte",
+        "Conectando o cabo de 24 pinos com a fonte já ligada na tomada",
+        "Removendo a bateria CR2032 com o sistema energizado",
+        "Pressionando diretamente os contatos da memória RAM"
+      ],
+      "correta": 0,
+      "explicacao": "O botão Power do gabinete apenas fecha momentaneamente o circuito PWR_SW; na bancada simulamos esse pulso com a chave de fenda.",
+      "tags": ["jump-power", "post", "bancada"]
+    }
+  ]
+}

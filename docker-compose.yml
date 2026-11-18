@@ -1,0 +1,69 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: virtuhar3d-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-virtuhar3d}
+      POSTGRES_USER: ${POSTGRES_USER:-virtuhar3d_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_ME_LOCAL_DEV_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${POSTGRES_USER:-virtuhar3d_app} -d ${POSTGRES_DB:-virtuhar3d}',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - virtuhar_net
+
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: virtuhar3d-api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      API_PORT: ${API_PORT:-3001}
+      API_HOST: 0.0.0.0
+      DATABASE_URL: postgresql://${POSTGRES_USER:-virtuhar3d_app}:${POSTGRES_PASSWORD:-CHANGE_ME_LOCAL_DEV_PASSWORD}@db:5432/${POSTGRES_DB:-virtuhar3d}
+      SESSION_SECRET: ${SESSION_SECRET:-CHANGE_ME_MIN_32_CHARS_RANDOM_HEX}
+      SESSION_TTL_MINUTES: ${SESSION_TTL_MINUTES:-30}
+      CORS_ORIGIN: ${CORS_ORIGIN:-https://localhost}
+    expose:
+      - '3001'
+    networks:
+      - virtuhar_net
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: virtuhar3d-nginx
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./infra/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./infra/nginx/certs:/etc/nginx/certs:ro
+      - ./dist:/usr/share/nginx/html:ro
+      - ./content/data:/usr/share/nginx/html/content:ro
+    networks:
+      - virtuhar_net
+
+volumes:
+  pgdata:
+
+networks:
+  virtuhar_net:
+    driver: bridge

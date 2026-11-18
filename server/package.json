@@ -1,0 +1,12 @@
+{
+  "name": "@virtuhar3d/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "seed": "tsx src/seed.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

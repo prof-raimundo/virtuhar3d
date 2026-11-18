@@ -1,0 +1,16 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+infra/nginx/certs/*.key
+infra/nginx/certs/*.crt
+infra/nginx/certs/*.pem
+infra/nginx/certs/*.csr
+infra/nginx/certs/*.srl
+test-results/
+playwright-report/
+

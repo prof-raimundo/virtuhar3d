@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "M01",
+  "titulo": "Teste de bancada: do jump ao POST",
+  "trilha": "montagem_hardware",
+  "versao": "MVP",
+  "etiqueta": {
+    "modulo": "Módulo V — Montagem avançada e primeira energização",
+    "aulas": [51, 60]
+  },
+  "ordemServico": {
+    "cliente": "Secretaria Escolar",
+    "equipamento": "Desktop Administrativo (Kit de Bancada)",
+    "relato": "O computador da secretaria parou de dar vídeo após uma limpeza. Antes de montar no gabinete, precisamos testar o kit mínimo na bancada e confirmar o POST no monitor."
+  },
+  "conhecimentosPrevios": [
+    {
+      "id": "cp-m01-1",
+      "pergunta": "Quais componentes formam o conjunto mínimo para que uma placa-mãe execute o POST e exiba vídeo?",
+      "opcoes": [
+        "Placa-mãe, CPU (com cooler), pelo menos um módulo de RAM, fonte conectada e saída de vídeo ligada ao monitor",
+        "Apenas placa-mãe e disco rígido SATA",
+        "Gabinete metálico completo com leitor de DVD"
+      ],
+      "correta": 0,
+      "explicacao": "O POST ocorre antes de carregar o sistema operacional; armazenamento não é exigido para exibir o vídeo inicial da BIOS."
+    }
+  ],
+  "microaula": {
+    "titulo": "Sequência de bancada, compatibilidade e jump nos pinos de Power",
+    "topicos": [
+      "Confira sempre compatibilidade de soquete (LGA1151) e tipo de memória (DDR4).",
+      "Aplique a pasta térmica antes de encaixar o cooler sobre a CPU.",
+      "Certifique-se de que a chave da fonte está desligada antes de conectar ATX 24 pinos e EPS 8 pinos.",
+      "Ligue a fonte e faça o jump momentâneo nos pinos PWR_SW com a chave de fenda."
+    ],
+    "glossario": [
+      {
+        "termo": "Jump (Power Switch)",
+        "definicao": "Contato momentâneo entre os dois pinos PWR_SW do painel frontal para simular o pressionar do botão ligar."
+      },
+      {
+        "termo": "EPS 8 pinos",
+        "definicao": "Conector de alimentação de 12 V dedicado ao regulador de tensão do processador."
+      }
+    ]
+  },
+  "pecasDisponiveis": [
+    "pulseira-esd",
+    "cpu-lga1151-i3",
+    "cpu-am4-ryzen",
+    "pasta-termica",
+    "cooler-lga1151",
+    "ram-ddr4-8gb",
+    "ram-ddr3-4gb",
+    "fonte-500w",
+    "cabo-atx-24p",
+    "cabo-eps-8p",
+    "cabo-video-hdmi",
+    "chave-fenda"
+  ],
+  "estadoInicial": {
+    "esdColocada": false,
+    "fonteLigada": false,
+    "pecasInstaladas": [
+      { "pecaId": "bancada-esd", "ponto": "bancada" },
+      { "pecaId": "monitor-virtual", "ponto": "ponto_monitor" },
+      { "pecaId": "placa-mae-lga1151", "ponto": "ponto_placa_mae" }
+    ]
+  },
+  "passos": [
+    {
+      "id": "vestir-esd",
+      "descricao": "Colocar a pulseira antiestática no ponto de aterramento",
+      "preRequisitos": [],
+      "acaoEsperada": { "tipo": "vestir_esd", "peca": "pulseira-esd", "em": "ponto_aterramento" },
+      "dica": "Comece pela segurança: equipe a pulseira ESD antes de tocar nas peças."
+    },
+    {
+      "id": "instalar-cpu",
+      "descricao": "Instalar a CPU compatível (LGA1151) no soquete da placa-mãe",
+      "preRequisitos": ["vestir-esd"],
+      "acaoEsperada": { "tipo": "encaixar", "peca": "cpu-lga1151-i3", "em": "ponto_soquete" },
+      "dica": "Confira o soquete da placa-mãe (LGA1151) antes de escolher o processador."
+    },
+    {
+      "id": "aplicar-pasta",
+      "descricao": "Aplicar gota central de pasta térmica sobre a CPU",
+      "preRequisitos": ["instalar-cpu"],
+      "acaoEsperada": { "tipo": "aplicar_pasta", "peca": "pasta-termica", "em": "ponto_soquete" },
+      "dica": "A pasta térmica deve ser aplicada após a CPU e antes do cooler."
+    },
+    {
+      "id": "instalar-cooler",
+      "descricao": "Instalar o cooler sobre a CPU e conectar ao CPU_FAN",
+      "preRequisitos": ["instalar-cpu", "aplicar-pasta"],
+      "acaoEsperada": { "tipo": "encaixar", "peca": "cooler-lga1151", "em": "ponto_soquete" },
+      "dica": "Encaixe o cooler somente depois de aplicar a pasta térmica."
+    },
+    {
+      "id": "instalar-ram-1",
+      "descricao": "Instalar o primeiro pente de memória DDR4 no slot 1",
+      "preRequisitos": ["vestir-esd"],
+      "acaoEsperada": { "tipo": "encaixar", "peca": "ram-ddr4-8gb", "em": "ponto_ram1" },
+      "dica": "A placa-mãe aceita apenas módulos DDR4."
+    },
+    {
+      "id": "instalar-ram-2",
+      "descricao": "Instalar o segundo pente de memória DDR4 no slot 2",
+      "preRequisitos": ["vestir-esd"],
+      "acaoEsperada": { "tipo": "encaixar", "peca": "ram-ddr4-8gb", "em": "ponto_ram2" },
+      "dica": "Complete o par dual-channel encaixando o segundo pente DDR4 em ponto_ram2."
+    },
+    {
+      "id": "posicionar-fonte",
+      "descricao": "Posicionar a fonte ATX 500W na área de alimentação da bancada",
+      "preRequisitos": [],
+      "acaoEsperada": { "tipo": "encaixar", "peca": "fonte-500w", "em": "ponto_fonte" }
+    },
+    {
+      "id": "conectar-video",
+      "descricao": "Conectar o cabo HDMI da placa-mãe ao monitor virtual",
+      "preRequisitos": [],
+      "acaoEsperada": {
+        "tipo": "conectar_cabo",
+        "peca": "cabo-video-hdmi",
+        "em": "ponto_hdmi_placa"
+      }
+    },
+    {
+      "id": "conectar-24p",
+      "descricao": "Conectar o cabo de energia ATX 24 pinos com a fonte desligada",
+      "preRequisitos": ["posicionar-fonte"],
+      "acaoEsperada": { "tipo": "conectar_cabo", "peca": "cabo-atx-24p", "em": "ponto_24pinos" },
+      "dica": "Mantenha a chave da fonte na posição desligada (0) ao plugar cabos internos."
+    },
+    {
+      "id": "conectar-eps",
+      "descricao": "Conectar o cabo de energia CPU EPS 8 pinos com a fonte desligada",
+      "preRequisitos": ["posicionar-fonte"],
+      "acaoEsperada": { "tipo": "conectar_cabo", "peca": "cabo-eps-8p", "em": "ponto_eps" }
+    },
+    {
+      "id": "ligar-fonte",
+      "descricao": "Acionar a chave traseira da fonte para a posição ligada (I)",
+      "preRequisitos": ["conectar-24p", "conectar-eps"],
+      "acaoEsperada": { "tipo": "ligar_fonte", "peca": "fonte-500w", "em": "ponto_fonte" }
+    },
+    {
+      "id": "jump-power",
+      "descricao": "Fazer o jump nos pinos PWR_SW com a chave de fenda e verificar o POST",
+      "preRequisitos": [
+        "instalar-cooler",
+        "instalar-ram-1",
+        "instalar-ram-2",
+        "conectar-video",
+        "ligar-fonte"
+      ],
+      "acaoEsperada": {
+        "tipo": "jump_power",
+        "peca": "chave-fenda",
+        "em": "ponto_f_panel_power"
+      },
+      "dica": "Use a chave de fenda nos pinos do painel frontal após ligar a chave da fonte."
+    }
+  ],
+  "tempoReferenciaSeg": 900,
+  "cartoes": [
+    {
+      "tipo": "atencao",
+      "gatilhoPassoId": "instalar-cooler",
+      "titulo": "Não esqueça a pasta térmica!",
+      "conteudo": "Instalar o cooler sem pasta térmica provoca superaquecimento imediato do processador."
+    },
+    {
+      "tipo": "seguranca",
+      "gatilhoPassoId": "conectar-24p",
+      "titulo": "Fonte desligada antes de cabear",
+      "conteudo": "Sempre confira se a chave traseira da fonte está em 0 (desligada) antes de conectar os cabos na placa-mãe."
+    },
+    {
+      "tipo": "dica_profissional",
+      "gatilhoPassoId": "jump-power",
+      "titulo": "Diagnóstico rápido em bancada",
+      "conteudo": "Testar o kit mínimo fora do gabinete isola curtos-circuitos causados por espaçadores mal posicionados."
+    }
+  ],
+  "questoes": ["q-m01-01", "q-m01-02"]
+}

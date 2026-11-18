@@ -1,0 +1,75 @@
+name: CI — VIRTUHAR3D
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  qualidade-e-testes:
+    name: Estático, Schemas e Testes Unitários
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Verificar formatação (Prettier)
+        run: npm run format:check
+
+      - name: Verificar ESLint e TypeScript strict
+        run: npm run lint
+
+      - name: Validar schemas JSON de conteúdo (Zod)
+        run: npm run validate:content
+
+      - name: Validar orçamento gráfico e integridade de assets 3D
+        run: npm run validate:assets
+
+      - name: Verificar matriz de rastreabilidade MVP (US-01..US-11, US-21, US-22)
+        run: npm run test:traceability
+
+      - name: Executar testes e verificar limiares de cobertura (Vitest)
+        run: npm run test:coverage
+
+      - name: Auditar dependências de produção (vulnerabilidades altas/críticas)
+        run: if [ -f package-lock.json ]; then npm audit --omit=dev --audit-level=high; else npm i --package-lock-only && npm audit --omit=dev --audit-level=high; fi
+
+      - name: Build de produção do front-end
+        run: npm run build
+
+  e2e-acessibilidade:
+    name: E2E e Acessibilidade WCAG AA (Playwright + axe-core)
+    runs-on: ubuntu-latest
+    needs: qualidade-e-testes
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Instalar navegadores Chromium e Firefox (Playwright)
+        run: npx playwright install --with-deps chromium firefox
+
+      - name: Executar suíte E2E e auditoria axe-core
+        env:
+          PLAYWRIGHT_INCLUDE_FIREFOX: 'true'
+        run: npm run test:e2e

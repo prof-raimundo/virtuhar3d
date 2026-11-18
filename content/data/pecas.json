@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "1.0.0",
+  "pecas": [
+    {
+      "id": "bancada-esd",
+      "tipo": "bancada",
+      "nome": "Bancada de Trabalho com Tapete Antiestático",
+      "modelo3d": "modelos/bancada/bancada-esd.glb",
+      "pontosDeEncaixe": ["ponto_placa_mae", "ponto_fonte", "ponto_monitor", "ponto_aterramento"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "papel": "superficie_trabalho"
+      },
+      "descricao": "Bancada isolada equipada com tapete dissipativo e ponto de aterramento para pulseira ESD.",
+      "textoAlternativo": "Mesa de laboratório com tapete azul antiestático e borne de aterramento no canto direito.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "monitor-virtual",
+      "tipo": "monitor",
+      "nome": "Monitor de Bancada 19\"",
+      "modelo3d": "modelos/perifericos/monitor-virtual.glb",
+      "pontosDeEncaixe": ["ponto_hdmi_monitor"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "papel": "exibicao_post",
+        "entradasVideo": ["HDMI", "VGA"]
+      },
+      "descricao": "Monitor de teste utilizado na bancada para visualizar o POST (Power-On Self-Test) e a tela da BIOS.",
+      "textoAlternativo": "Monitor LCD preto apoiado sobre a bancada, exibindo tela escura quando desligado.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "placa-mae-lga1151",
+      "tipo": "placa_mae",
+      "nome": "Placa-Mãe ATX LGA1151 DDR4",
+      "modelo3d": "modelos/placa_mae/placa-mae-lga1151.glb",
+      "pontosDeEncaixe": [
+        "ponto_soquete",
+        "ponto_ram1",
+        "ponto_ram2",
+        "ponto_pcie1",
+        "ponto_24pinos",
+        "ponto_eps",
+        "ponto_cpu_fan",
+        "ponto_f_panel_power",
+        "ponto_hdmi_placa"
+      ],
+      "sensivelESD": true,
+      "consumoW": 35,
+      "atributos": {
+        "soquete": "LGA1151",
+        "formato": "ATX",
+        "tipoRam": "DDR4",
+        "slotsRam": 2,
+        "slotsPcie": 1,
+        "interfacesArmazenamento": ["SATA", "M.2"],
+        "saidaVideo": true,
+        "conectoresEnergia": ["ATX_24P", "EPS_8P"]
+      },
+      "descricao": "Placa-mãe padrão ATX com soquete LGA1151, dois slots DDR4, saída de vídeo integrada e pinos de painel frontal identificados.",
+      "textoAlternativo": "Placa de circuito impresso escura com soquete metálico central, dois slots de memória RAM e conectores de alimentação.",
+      "licenca": {
+        "tipo": "CC-BY",
+        "autor": "Acervo Educacional OpenHardware 3D",
+        "origem": "Adaptação Blender VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "cpu-lga1151-i3",
+      "tipo": "cpu",
+      "nome": "Processador Core i3-8100 (LGA1151)",
+      "modelo3d": "modelos/cpu/cpu-lga1151-i3.glb",
+      "pontosDeEncaixe": ["ponto_soquete"],
+      "sensivelESD": true,
+      "consumoW": 65,
+      "atributos": {
+        "soquete": "LGA1151",
+        "frequenciaGhz": 3.6,
+        "nucleos": 4
+      },
+      "descricao": "Processador de 4 núcleos compatível com soquete LGA1151 e vídeo integrado para teste em bancada.",
+      "textoAlternativo": "Processador quadrado com dissipador metálico superior, marca de triângulo dourado no canto e contatos dourados na face inferior.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "cpu-am4-ryzen",
+      "tipo": "cpu",
+      "nome": "Processador Ryzen 5 3600 (AM4)",
+      "modelo3d": "modelos/cpu/cpu-am4-ryzen.glb",
+      "pontosDeEncaixe": ["ponto_soquete"],
+      "sensivelESD": true,
+      "consumoW": 65,
+      "atributos": {
+        "soquete": "AM4",
+        "frequenciaGhz": 3.6,
+        "nucleos": 6
+      },
+      "descricao": "Processador com pinos inferiores (PGA) para soquete AM4 — incompatível com placas LGA1151.",
+      "textoAlternativo": "Processador quadrado com pinos metálicos na face inferior para encaixe em soquete AM4.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "cooler-lga1151",
+      "tipo": "cooler",
+      "nome": "Cooler Box com Ventoinha PWM",
+      "modelo3d": "modelos/cooler/cooler-lga1151.glb",
+      "pontosDeEncaixe": ["ponto_soquete", "ponto_cpu_fan"],
+      "sensivelESD": false,
+      "consumoW": 5,
+      "atributos": {
+        "soquetesCompativeis": ["LGA1151", "LGA1200"],
+        "alturaMm": 70,
+        "potenciaTermicaW": 95,
+        "conector": "CPU_FAN"
+      },
+      "descricao": "Dissipador de alumínio com ventoinha de 4 pinos para refrigeração ativa da CPU.",
+      "textoAlternativo": "Conjunto de dissipador circular de alumínio com ventoinha preta superior e cabo de 4 pinos.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "pasta-termica",
+      "tipo": "ferramenta",
+      "nome": "Seringa de Pasta Térmica",
+      "modelo3d": "modelos/ferramentas/pasta-termica.glb",
+      "pontosDeEncaixe": ["ponto_soquete"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "funcao": "pasta_termica"
+      },
+      "descricao": "Composto térmico condutor aplicado em pequena gota no centro do processador antes do cooler.",
+      "textoAlternativo": "Seringa plástica com composto térmico cinza para aplicação sobre o processador.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "ram-ddr4-8gb",
+      "tipo": "ram",
+      "nome": "Módulo de Memória DDR4 8 GB 2666 MHz",
+      "modelo3d": "modelos/ram/ram-ddr4-8gb.glb",
+      "pontosDeEncaixe": ["ponto_ram1", "ponto_ram2"],
+      "sensivelESD": true,
+      "consumoW": 4,
+      "atributos": {
+        "tipo": "DDR4",
+        "capacidadeGB": 8,
+        "frequenciaMhz": 2666
+      },
+      "descricao": "Módulo DIMM DDR4 de 288 pinos com chanfro deslocado para evitar inversão no encaixe.",
+      "textoAlternativo": "Pente retangular de memória RAM DDR4 com contatos dourados na base e chanfro de alinhamento.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "ram-ddr3-4gb",
+      "tipo": "ram",
+      "nome": "Módulo de Memória DDR3 4 GB 1600 MHz",
+      "modelo3d": "modelos/ram/ram-ddr3-4gb.glb",
+      "pontosDeEncaixe": ["ponto_ram1", "ponto_ram2"],
+      "sensivelESD": true,
+      "consumoW": 5,
+      "atributos": {
+        "tipo": "DDR3",
+        "capacidadeGB": 4,
+        "frequenciaMhz": 1600
+      },
+      "descricao": "Módulo DIMM DDR3 — incompatível física e eletricamente com slots DDR4.",
+      "textoAlternativo": "Pente de memória RAM DDR3 com chanfro em posição diferente do padrão DDR4.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "fonte-500w",
+      "tipo": "fonte",
+      "nome": "Fonte ATX 500W 80 Plus",
+      "modelo3d": "modelos/fonte/fonte-500w.glb",
+      "pontosDeEncaixe": ["ponto_fonte"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "potenciaW": 500,
+        "conectores": ["ATX_24P", "EPS_8P", "PCIE_6P", "SATA"]
+      },
+      "descricao": "Fonte de alimentação chaveada ATX de 500 W reais com chave liga/desliga traseira.",
+      "textoAlternativo": "Caixa metálica preta de fonte ATX com grade de ventilação e chave seletora traseira I/O.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "cabo-atx-24p",
+      "tipo": "cabo",
+      "nome": "Cabo de Energia ATX 24 Pinos",
+      "modelo3d": "modelos/cabos/cabo-atx-24p.glb",
+      "pontosDeEncaixe": ["ponto_24pinos"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "categoria": "energia_atx24",
+        "interface": "ATX_24P"
+      },
+      "descricao": "Chicote principal de 24 pinos que alimenta a placa-mãe.",
+      "textoAlternativo": "Cabo multifio com conector retangular de 24 pinos e trava lateral.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "cabo-eps-8p",
+      "tipo": "cabo",
+      "nome": "Cabo de Energia CPU EPS 8 Pinos",
+      "modelo3d": "modelos/cabos/cabo-eps-8p.glb",
+      "pontosDeEncaixe": ["ponto_eps"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "categoria": "energia_eps",
+        "interface": "EPS_8P"
+      },
+      "descricao": "Cabo auxiliar de 12V (EPS 8 pinos) dedicado à alimentação do processador.",
+      "textoAlternativo": "Cabo com conector quadrado de 8 pinos para alimentação auxiliar da CPU.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "cabo-video-hdmi",
+      "tipo": "cabo",
+      "nome": "Cabo de Vídeo HDMI",
+      "modelo3d": "modelos/cabos/cabo-video-hdmi.glb",
+      "pontosDeEncaixe": ["ponto_hdmi_placa", "ponto_hdmi_monitor"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "categoria": "video",
+        "interface": "HDMI"
+      },
+      "descricao": "Cabo HDMI que conecta a saída de vídeo da placa-mãe ao monitor virtual de bancada.",
+      "textoAlternativo": "Cabo preto com conectores HDMI trapezoidais nas extremidades.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "pulseira-esd",
+      "tipo": "ferramenta",
+      "nome": "Pulseira Antiestática (ESD)",
+      "modelo3d": "modelos/ferramentas/pulseira-esd.glb",
+      "pontosDeEncaixe": ["ponto_aterramento"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "funcao": "esd_protecao"
+      },
+      "descricao": "Pulseira com resistor de 1 MΩ ligada ao aterramento da bancada para descarregar eletricidade estática com segurança.",
+      "textoAlternativo": "Pulseira azul ajustável com fio espiralado e garra jacaré conectada ao ponto de aterramento.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    },
+    {
+      "id": "chave-fenda",
+      "tipo": "ferramenta",
+      "nome": "Chave de Fenda Isolada",
+      "modelo3d": "modelos/ferramentas/chave-fenda.glb",
+      "pontosDeEncaixe": ["ponto_f_panel_power"],
+      "sensivelESD": false,
+      "consumoW": 0,
+      "atributos": {
+        "funcao": "jump_power"
+      },
+      "descricao": "Ferramenta metálica com cabo isolado usada para fechar o contato momentâneo (jump) entre os pinos PWR_SW da bancada.",
+      "textoAlternativo": "Chave de fenda com cabo amarelo e azul isolado e ponta metálica fina.",
+      "licenca": {
+        "tipo": "CC0",
+        "autor": "Equipe VIRTUHAR3D (Asset Base)",
+        "origem": "Acervo Educacional VIRTUHAR3D"
+      }
+    }
+  ]
+}

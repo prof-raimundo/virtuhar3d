@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "M00",
+  "titulo": "Conheça a bancada e o protocolo ESD",
+  "trilha": "montagem_hardware",
+  "versao": "MVP",
+  "etiqueta": {
+    "modulo": "Módulo II e III — Arquitetura física e ferramentas ESD",
+    "aulas": [10, 36]
+  },
+  "ordemServico": {
+    "cliente": "Coordenação Pedagógica — EEEP",
+    "equipamento": "Bancada de Triagem #01",
+    "relato": "Antes de abrir qualquer computador da escola, precisamos preparar a bancada de trabalho e garantir proteção contra descarga eletrostática (ESD)."
+  },
+  "conhecimentosPrevios": [
+    {
+      "id": "cp-m00-1",
+      "pergunta": "Por que uma descarga eletrostática imperceptível ao tato humano pode danificar uma CPU ou memória RAM?",
+      "opcoes": [
+        "Porque componentes eletrônicos operam com tensões baixas (1 V a 3,3 V) e trilhas microscópicas sensíveis a picos de milhares de volts",
+        "Porque a eletricidade estática desmagnetiza o plástico do gabinete",
+        "Porque derrete os cabos de energia externos"
+      ],
+      "correta": 0,
+      "explicacao": "Uma faísca que mal sentimos já ultrapassa 3.000 V, suficiente para perfurar camadas nanométricas de óxido em chips."
+    }
+  ],
+  "microaula": {
+    "titulo": "Segurança ESD e reconhecimento dos componentes na bancada",
+    "topicos": [
+      "ESD (Electrostatic Discharge): descarga repentina de corrente entre dois corpos com potenciais diferentes.",
+      "Use sempre a pulseira antiestática conectada ao ponto de aterramento da bancada antes de tocar em placa-mãe, CPU ou memória.",
+      "Segure placas e memórias pelas bordas, evitando tocar nos contatos dourados."
+    ],
+    "glossario": [
+      {
+        "termo": "ESD (Descarga Eletrostática)",
+        "definicao": "Transferência rápida de carga elétrica acumulada no corpo para um componente eletrônico sensível."
+      },
+      {
+        "termo": "POST (Power-On Self-Test)",
+        "definicao": "Autoteste inicial executado pela BIOS/UEFI assim que o computador é energizado."
+      }
+    ]
+  },
+  "pecasDisponiveis": ["pulseira-esd", "placa-mae-lga1151", "cpu-lga1151-i3", "ram-ddr4-8gb"],
+  "estadoInicial": {
+    "esdColocada": false,
+    "fonteLigada": false,
+    "pecasInstaladas": [
+      { "pecaId": "bancada-esd", "ponto": "bancada" },
+      { "pecaId": "placa-mae-lga1151", "ponto": "ponto_placa_mae" }
+    ]
+  },
+  "passos": [
+    {
+      "id": "vestir-pulseira-esd",
+      "descricao": "Colocar a pulseira antiestática e conectá-la ao ponto de aterramento da bancada",
+      "preRequisitos": [],
+      "acaoEsperada": {
+        "tipo": "vestir_esd",
+        "peca": "pulseira-esd",
+        "em": "ponto_aterramento"
+      },
+      "dica": "Selecione a pulseira antiestática na lista de ferramentas à esquerda e encaixe no ponto de aterramento."
+    },
+    {
+      "id": "inspecionar-placa-mae",
+      "descricao": "Inspecionar a placa-mãe LGA1151 após estar aterrado com ESD",
+      "preRequisitos": ["vestir-pulseira-esd"],
+      "acaoEsperada": {
+        "tipo": "inspecionar",
+        "peca": "placa-mae-lga1151",
+        "em": "ponto_placa_mae"
+      },
+      "dica": "Clique na placa-mãe já sobre o tapete antiestático para visualizar seus conectores."
+    },
+    {
+      "id": "instalar-cpu-tutorial",
+      "descricao": "Encaixar o processador LGA1151 no soquete correspondente",
+      "preRequisitos": ["vestir-pulseira-esd", "inspecionar-placa-mae"],
+      "acaoEsperada": {
+        "tipo": "encaixar",
+        "peca": "cpu-lga1151-i3",
+        "em": "ponto_soquete"
+      },
+      "dica": "Verifique se o soquete da CPU é LGA1151 antes de posicionar no ponto_soquete."
+    }
+  ],
+  "tempoReferenciaSeg": 300,
+  "cartoes": [
+    {
+      "tipo": "seguranca",
+      "gatilhoPassoId": "vestir-pulseira-esd",
+      "titulo": "Protocolo ESD obrigatório",
+      "conteudo": "Nunca toque em processadores, memórias ou placa-mãe sem estar aterrado com a pulseira antiestática."
+    },
+    {
+      "tipo": "conexao_fgb",
+      "gatilhoPassoId": "vestir-pulseira-esd",
+      "titulo": "Física: Eletrostática e Aterramento",
+      "conteudo": "O resistor de 1 MΩ em série na pulseira limita a corrente elétrica, protegendo tanto o técnico quanto os chips.",
+      "areaFgb": "Fisica"
+    }
+  ],
+  "questoes": ["q-m00-01"]
+}

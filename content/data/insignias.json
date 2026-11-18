@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "insignias": [
+    {
+      "id": "tecnico-esd-safe",
+      "nome": "Técnico ESD-safe",
+      "descricao": "Concluiu 3 missões seguidas sem nenhuma violação do protocolo antiestático.",
+      "criterio": "esd_sem_violacao_3_seguidas",
+      "textoAlternativo": "Escudo azul e dourado simbolizando proteção contra descarga eletrostática."
+    },
+    {
+      "id": "montador-preciso",
+      "nome": "Montador Preciso",
+      "descricao": "Completou uma missão sem erros de ordem de montagem nem de compatibilidade.",
+      "criterio": "zero_erros_ordem_compatibilidade",
+      "textoAlternativo": "Medalha prateada com ícone de engrenagem e visto de precisão."
+    },
+    {
+      "id": "agil",
+      "nome": "Ágil",
+      "descricao": "Concluiu a montagem abaixo do tempo de referência mantendo nota mínima de aprovação.",
+      "criterio": "abaixo_tempo_referencia_aprovado",
+      "textoAlternativo": "Cronômetro estilizado verde indicando eficiência com qualidade."
+    },
+    {
+      "id": "cacador-de-defeitos",
+      "nome": "Caçador de Defeitos",
+      "descricao": "Diagnosticou e resolveu corretamente um cenário de defeito na Bancada de Reparo.",
+      "criterio": "cenario_defeito_resolvido",
+      "textoAlternativo": "Lupa sobre circuito integrado representando diagnóstico técnico."
+    },
+    {
+      "id": "primeira-missao",
+      "nome": "Primeira Ordem Concluída",
+      "descricao": "Finalizou a primeira ordem de serviço na assistência técnica virtual.",
+      "criterio": "primeira_missao_concluida",
+      "textoAlternativo": "Estrela bronze comemorando a conclusão da primeira missão."
+    }
+  ]
+}

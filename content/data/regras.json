@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "fonte": {
+    "margemSegurancaPercentual": 20
+  },
+  "esd": {
+    "pontuacaoMaxima": 20,
+    "descontoPorViolacao": 10,
+    "tiposSensiveis": ["cpu", "ram", "placa_mae", "gpu", "armazenamento"]
+  },
+  "ordem": {
+    "pontuacaoMaxima": 30,
+    "descontoPorErro": 5
+  },
+  "compatibilidade": {
+    "pontuacaoMaxima": 30,
+    "descontoPorErro": 5
+  },
+  "tempo": {
+    "pontuacaoMaxima": 20,
+    "multiplicadorLimiteZero": 2
+  },
+  "modoGuiado": {
+    "descontoPorDica": 2,
+    "descontoMaximoDicas": 10
+  },
+  "aprovacao": {
+    "notaMinima": 60
+  },
+  "acesso": {
+    "tentativasMaximas": 5,
+    "bloqueioMinutos": 5,
+    "expiracaoSessaoMinutos": 30,
+    "tamanhoMinimoSenha": 8
+  },
+  "niveis": [
+    { "nome": "Aprendiz", "pontosMinimos": 0 },
+    { "nome": "Montador", "pontosMinimos": 200 },
+    { "nome": "Técnico", "pontosMinimos": 500 },
+    { "nome": "Técnico Sênior", "pontosMinimos": 1000 },
+    { "nome": "Mestre", "pontosMinimos": 1800 }
+  ]
+}
